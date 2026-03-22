@@ -1,3 +1,101 @@
-.body{
-    color: aqua;
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main container */
+.container {
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    width: 420px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input and button container */
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Input field */
+#city-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+}
+
+#city-input:focus {
+    border-color: #4facfe;
+}
+
+/* Button */
+#get-weather-btn {
+    padding: 10px 15px;
+    border: none;
+    background: #4facfe;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#get-weather-btn:hover {
+    background: #3a8edb;
+}
+
+/* Weather info */
+#weather-info {
+    margin-top: 15px;
+}
+
+#city-name {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+#temperature {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#description {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Error message */
+#error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
 }
