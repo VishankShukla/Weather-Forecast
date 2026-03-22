@@ -6,19 +6,44 @@ document.addEventListener('DOMContentLoaded',() => {
     const temperatureDisplay = document.getElementById("temperature");
     const descriptionDisplay = document.getElementById("description");
     const errorMessage = document.getElementById("error-message");
+    const API_Key ="a89c8c6be9551d97f8b5f1835d10e494";
     
-    getWeatherBtn.addEventListener('click',() => {
+    getWeatherBtn.addEventListener('click',async () => {
         let city = cityInput.value.trim();
         if(city == ""){
             return;
         } 
+        // it may throw an error
+        // server/database is always in another continent
+        try {
+            const weatherData = await fetchWeatherData(city);
+            displayWeatherData(weatherData);
+        } catch (error) {
+            showError();
+        }
+
     });
 
-    function fetchWeatherData(city){
+    async function fetchWeatherData(city){
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},IN&appid=${API_Key}&units=metric`;
+        const response = await fetch(url);
 
+        if(!response.ok){
+            throw new Error("City not found");
+        }
+        const data = await response.json();
+        return data;
     }
-    function displayWeatherData(weatherData){
-        //display
+    function displayWeatherData(data){
+        console.log(data);
+        const { name, main, weather} = data;
+        cityNameDisplay.textContent = name;
+        temperatureDisplay.textContent = `Temperature: ${main.temp}`;
+        descriptionDisplay.textContent = `Weather: ${weather[0].description}`;
+
+        weatherInfo.classList.remove("hidden");
+        errorMessage.classList.add("hidden");
+        
 
     }
     function showError(){
